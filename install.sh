@@ -66,3 +66,5 @@ source ~/.bashrc
 source ~/.zshrc
 
 echo "✅ Customization complete!"
+
+#Add Seclist github
