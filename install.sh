@@ -41,11 +41,18 @@ cd
 pdtm -ia # installs all tools
 pdtm
 
-
 echo "🔧 update nuclei templates..."
 nuclei -update-templates
 
+#install SECLists
+echo "💾 Installing SECLists"
+cd /usr/share/wordlists
+git clone https://github.com/danielmiessler/SecLists.git
+cd
+
+
 #installing docker 
+echo "💾 Installing Docker..."
 sudo apt install -y docker.io
 sudo systemctl enable docker --now
 sudo usermod -aG docker $USER
@@ -55,6 +62,13 @@ curl -fsSL https://download.docker.com/linux/debian/gpg |
   sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
 sudo apt update
 sudo apt install -y docker-ce docker-ce-cli containerd.io
+
+#installing HELK
+echo "💾 Installing HELK..."
+git clone https://github.com/Cyb3rWard0g/HELK.git
+cd HELK/docker
+sudo ./helk_install.sh
+
 
 
 echo "⚙️  Applying custom configurations..."
@@ -67,4 +81,3 @@ source ~/.zshrc
 
 echo "✅ Customization complete!"
 
-#Add Seclist github
